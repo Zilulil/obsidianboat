@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
@@ -138,9 +139,15 @@ public class EntityObsidianBoat extends Entity
 
                 if (!flag)
                 {
-                    this.dropItemWithOffset(ObsidianBoat.obsidianBoat.itemID, 1, 0.0F);
+                	if (par1DamageSource.getEntity() instanceof EntityPlayer){
+                		boolean added = ((EntityPlayer) par1DamageSource.getEntity()).inventory.addItemStackToInventory(new ItemStack(ObsidianBoat.obsidianBoat, 1));
+                		if (!added)
+                			this.dropItemWithOffset(ObsidianBoat.obsidianBoat.itemID, 1, 0.0F);
+                	}
+                	else{
+                		this.dropItemWithOffset(ObsidianBoat.obsidianBoat.itemID, 1, 0.0F);
+                	}
                 }
-
                 this.setDead();
             }
 
