@@ -1,0 +1,21 @@
+{
+	"modinfoversion": 2,
+	"modlist": [{
+		"modidi": "ObsidianBoat",
+		"name": "Obsidian Boat",
+		"description": "A simple mod adding a boat capable of traversing lava",
+		"version": "1.2",
+		"mcversion": "1.6.4",
+		"url": "http://www.minecraftforum.net/topic/2206468-",
+		"updateUrl": "",
+		"authors": ["Zilulil"],
+		"credits": "Authored by Zilulil",
+		"logoFile": "",
+		"screenshots": [],
+		"parent": "",
+		"requiredMods": ["Forge"],
+		"dependencies": [],
+		"dependants": [],
+		"useDependencyInformation": "false"
+	}]
+}
