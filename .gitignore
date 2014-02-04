@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+=======
+cpw/
+ibxm/
+net/
+paulscode/
+*.lzma
+fml_at.cfg
+fml_marker.cfg
+fmlversion.properties
+forge_at.cfg
+forge_logo.png
+mcpmod.info
+Start.java
+zilulil/tutorial/
+assets/forge/
+assets/tutorial/
+>>>>>>> e0ff4da761f6145dbcf19fd6a10b1a313d01ef09
 #################
 ## Eclipse
 #################
@@ -15,8 +33,11 @@ local.properties
 .classpath
 .settings/
 .loadpath
+<<<<<<< HEAD
 *.gradle
 gradle*
+=======
+>>>>>>> e0ff4da761f6145dbcf19fd6a10b1a313d01ef09
 
 # External tool builders
 .externalToolBuilders/
