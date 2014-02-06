@@ -261,12 +261,11 @@ public class EntityObsidianBoat extends Entity
             double d2 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double)(i + 1) / (double)b0 - 0.125D;
             AxisAlignedBB axisalignedbb = AxisAlignedBB.getAABBPool().getAABB(this.boundingBox.minX, d1, this.boundingBox.minZ, this.boundingBox.maxX, d2, this.boundingBox.maxZ);
 
-            if (this.worldObj.isAABBInMaterial(axisalignedbb, Material.field_151586_h))
+            if (this.worldObj.isAABBInMaterial(axisalignedbb, Material.water))
             {
                 d0 += 1.0D / (double)b0;
             }
-            else if (this.worldObj.isAABBInMaterial(axisalignedbb, Material.field_151587_i))
-            {
+            else if (this.worldObj.isAABBInMaterial(axisalignedbb, Material.lava)){
                 d0 += 1.0D / (double)b0;
                 inLavaFlag = true;
             }

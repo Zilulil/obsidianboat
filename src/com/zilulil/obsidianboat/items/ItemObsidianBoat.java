@@ -46,7 +46,7 @@ public class ItemObsidianBoat extends Item
         float f8 = f3 * f5;
         double d3 = 5.0D;
         Vec3 vec31 = vec3.addVector((double)f7 * d3, (double)f6 * d3, (double)f8 * d3);
-        MovingObjectPosition movingobjectposition = par2World.clip(vec3, vec31, true);
+        MovingObjectPosition movingobjectposition = par2World.rayTraceBlocks(vec3, vec31, true);
 
         if (movingobjectposition == null)
         {
@@ -88,7 +88,7 @@ public class ItemObsidianBoat extends Item
                     int j = movingobjectposition.blockY;
                     int k = movingobjectposition.blockZ;
 
-                    if (par2World.func_147439_a(i, j, k) == Blocks.snow_layer)
+                    if (par2World.getBlock(i, j, k) == Blocks.snow_layer)
                     {
                         --j;
                     }

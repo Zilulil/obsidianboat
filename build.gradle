@@ -23,7 +23,7 @@ group= "com.zilulil.obsidianboat" // http://maven.apache.org/guides/mini/guide-n
 archivesBaseName = project.projectDir.name //Set the jar name as the project root folder
 
 minecraft {
-	version = "1.7.2-10.12.0.1023"
+	version = "1.7.2-10.12.0.1024"
 	assetDir = "eclipse/assets"
 }
 //change the project structure
