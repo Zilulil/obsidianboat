@@ -44,7 +44,7 @@ public class ObsidianBoat {
 	@SidedProxy(clientSide=OBInfo.CLIENT_PROXY + "ClientProxy", serverSide=OBInfo.COMMON_PROXY + "CommonProxy")
 	public static CommonProxy proxy;
 
-	@EventHandler // used in 1.6.2
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
@@ -53,22 +53,15 @@ public class ObsidianBoat {
 		
 		//Why do I have to do this here instead of in the mcmod.info?
 		event.getModMetadata().authorList.add("Zilulil");
+		
+		// register items
+		GameRegistry.registerItem(obsidianBoat, "obsidianBoat");
 	}
 
 
 	@EventHandler
 	public void load(FMLInitializationEvent event){
-		// register items
-		GameRegistry.registerItem(obsidianBoat, "obsidianBoat");
-		
-		// define blocks
-		
-		//adding names
-		// LanguageRegistry.addName(obsidianBoat, "Obsidian Boat");
-		//items
-
-		//blocks
-		//crafting
+		//Crafting Recipes
 		if(!useDiamond){
 			GameRegistry.addRecipe(new ItemStack(obsidianBoat, 1), new Object[]{
 				"   ","T T","TTT",'T',Blocks.obsidian,
@@ -85,11 +78,10 @@ public class ObsidianBoat {
 		//register entities
 		int id = 0;
 		EntityRegistry.registerModEntity(EntityObsidianBoat.class, "ObsidianBoat", id++, this, 80, 1, true);
-		// LanguageRegistry.instance().addStringLocalization("entity.EntityObsidianBoat.name", "Obsidian Boat");
 		
 	}
 
-	@EventHandler // used in 1.6.2
+	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		// Stub Method
 	}
