@@ -19,7 +19,8 @@ assets/tutorial/
 #################
 ## Eclipse
 #################
-
+eclipse/
+*.txt
 *.pydevproject
 .project
 .metadata
