@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -18,7 +19,7 @@ import zilulil.obsidianboat.ObsidianBoat;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityObsidianBoat extends Entity
+public class EntityObsidianBoat extends EntityBoat
 {
     private boolean field_70279_a;
     private double speedMultiplier;
@@ -233,7 +234,8 @@ public class EntityObsidianBoat extends Entity
      */
     public void onUpdate()
     {
-        super.onUpdate();
+        //super.onUpdate();
+    	this.onEntityUpdate();
 
         if (this.getTimeSinceHit() > 0)
         {

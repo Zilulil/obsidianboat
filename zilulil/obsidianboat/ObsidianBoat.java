@@ -17,7 +17,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid=OBInfo.ID,name=OBInfo.NAME,version=OBInfo.VERS)
 @NetworkMod(clientSideRequired=true,serverSideRequired=false)
@@ -62,7 +61,7 @@ public class ObsidianBoat {
 		// define blocks
 		
 		//adding names
-		LanguageRegistry.addName(obsidianBoat, "Obsidian Boat");
+		//LanguageRegistry.addName(obsidianBoat, "Obsidian Boat");
 		
 		//items
 
@@ -83,7 +82,7 @@ public class ObsidianBoat {
 		
 		int id = 0;
 		EntityRegistry.registerModEntity(EntityObsidianBoat.class, "ObsidianBoat", id++, this, 80, 1, true);
-		LanguageRegistry.instance().addStringLocalization("entity.EntityObsidianBoat.name", "Obsidian Boat");
+		//LanguageRegistry.instance().addStringLocalization("entity.obsidianboat.ObsidianBoat.name", "Obsidian Boat");
 		
 	}
 
