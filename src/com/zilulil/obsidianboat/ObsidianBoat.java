@@ -56,6 +56,12 @@ public class ObsidianBoat {
 		
 		// register items
 		GameRegistry.registerItem(obsidianBoat, "obsidianBoat");
+		
+		proxy.registerRenderers();
+		
+		//register entities
+		int id = 0;
+		EntityRegistry.registerModEntity(EntityObsidianBoat.class, "ObsidianBoat", id++, this, 80, 1, true);
 	}
 
 
@@ -72,13 +78,6 @@ public class ObsidianBoat {
 				"   ","T T","TDT", 'T',Blocks.obsidian, 'D',Items.diamond,
 			});
 		}
-		
-		proxy.registerRenderers();
-		
-		//register entities
-		int id = 0;
-		EntityRegistry.registerModEntity(EntityObsidianBoat.class, "ObsidianBoat", id++, this, 80, 1, true);
-		
 	}
 
 	@EventHandler

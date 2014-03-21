@@ -17,9 +17,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderObsidianBoat extends Render
 {
-    private static final ResourceLocation boatTextures = new ResourceLocation("obsidianboat", "textures/entity/obsidianBoat.png");
+	private static final ResourceLocation boatTextures = new ResourceLocation("obsidianboat", "textures/entity/obsidianBoat.png");
     /** instance of ModelBoat for rendering */
     protected ModelBase modelObsidianBoat;
+
 
     public RenderObsidianBoat()
     {
@@ -30,7 +31,7 @@ public class RenderObsidianBoat extends Render
     /**
      * The render method used in RenderBoat that renders the boat model.
      */
-    public void renderObsidianBoat(EntityObsidianBoat par1EntityObsidianBoat, double par2, double par4, double par6, float par8, float par9)
+    public void doRender(EntityObsidianBoat par1EntityObsidianBoat, double par2, double par4, double par6, float par8, float par9)
     {
         GL11.glPushMatrix();
         GL11.glTranslatef((float)par2, (float)par4, (float)par6);
@@ -57,7 +58,7 @@ public class RenderObsidianBoat extends Render
         GL11.glPopMatrix();
     }
 
-    protected ResourceLocation getBoatTextures(EntityObsidianBoat par1EntityBoat)
+    protected ResourceLocation getEntityTexture(EntityObsidianBoat par1EntityBoat)
     {
         return boatTextures;
     }
@@ -67,7 +68,7 @@ public class RenderObsidianBoat extends Render
      */
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
-        return this.getBoatTextures((EntityObsidianBoat)par1Entity);
+        return this.getEntityTexture((EntityObsidianBoat)par1Entity);
     }
 
     /**
@@ -78,6 +79,6 @@ public class RenderObsidianBoat extends Render
      */
     public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
     {
-        this.renderObsidianBoat((EntityObsidianBoat)par1Entity, par2, par4, par6, par8, par9);
+        this.doRender((EntityObsidianBoat)par1Entity, par2, par4, par6, par8, par9);
     }
 }
