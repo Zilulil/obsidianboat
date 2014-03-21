@@ -18,7 +18,7 @@ buildscript {
   
 apply plugin: 'forge'
 
-version = "1.7.2-1.3.1"
+version = "1.7.2-1.3.2"
 group= "com.zilulil.obsidianboat" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = project.projectDir.name //Set the jar name as the project root folder
 
