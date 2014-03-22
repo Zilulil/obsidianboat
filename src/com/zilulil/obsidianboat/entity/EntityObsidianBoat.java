@@ -132,6 +132,9 @@ public class EntityObsidianBoat extends EntityBoat
         else if ("fireball".equals(par1DamageSource.getDamageType())){
         	return false;
         }
+        else if(par1DamageSource.isExplosion() && par2 <= 34){
+        	return false;
+        }
         else if (!this.worldObj.isRemote && !this.isDead)
         {
             this.setForwardDirection(-this.getForwardDirection());
