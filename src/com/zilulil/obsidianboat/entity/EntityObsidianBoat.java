@@ -44,54 +44,8 @@ public class EntityObsidianBoat extends EntityBoat
     public EntityObsidianBoat(World par1World)
     {
         super(par1World);
-        this.isBoatEmpty = true;
-        this.speedMultiplier = 0.07D;
-        this.preventEntitySpawning = true;
-        this.setSize(1.5F, 0.6F);
-        this.yOffset = this.height / 2.0F;
         this.isImmuneToFire = true;
         
-    }
-
-    /**
-     * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
-     * prevent them from trampling crops
-     */
-    protected boolean canTriggerWalking()
-    {
-        return false;
-    }
-
-    protected void entityInit()
-    {
-        this.dataWatcher.addObject(17, new Integer(0));
-        this.dataWatcher.addObject(18, new Integer(1));
-        this.dataWatcher.addObject(19, new Float(0.0F));
-    }
-
-    /**
-     * Returns a boundingBox used to collide the entity with other entities and blocks. This enables the entity to be
-     * pushable on contact, like boats or minecarts.
-     */
-    public AxisAlignedBB getCollisionBox(Entity par1Entity)
-    {
-        return par1Entity.boundingBox;
-    }
-
-    /**
-     * returns the bounding box for this entity
-     */
-    public AxisAlignedBB getBoundingBox()
-    {
-        return this.boundingBox;
-    }
-
-    /**
-     * Returns true if this entity should push and be pushed by other entities when colliding.
-     */
-    public boolean canBePushed()
-    {
-        return true;
     }
 
     public EntityObsidianBoat(World par1World, double par2, double par4, double par6)
@@ -170,74 +124,6 @@ public class EntityObsidianBoat extends EntityBoat
         {
             return true;
         }
-    }
-
-   
-
-    /**
-     * Setups the entity to do the hurt animation. Only used by packets in multiplayer.
-     */
-    @SideOnly(Side.CLIENT)
-    public void performHurtAnimation()
-    {
-        this.setForwardDirection(-this.getForwardDirection());
-        this.setTimeSinceHit(10);
-        this.setDamageTaken(this.getDamageTaken() * 11.0F);
-    }
-
-    /**
-     * Returns true if other Entities should be prevented from moving through this Entity.
-     */
-    public boolean canBeCollidedWith()
-    {
-        return !this.isDead;
-    }
-
-    /**
-     * Sets the position and rotation. Only difference from the other one is no bounding on the rotation. Args: posX,
-     * posY, posZ, yaw, pitch
-     */
-    @SideOnly(Side.CLIENT)
-    public void setPositionAndRotation2(double par1, double par3, double par5, float par7, float par8, int par9)
-    {
-        if (this.isBoatEmpty)
-        {
-            this.boatPosRotationIncrements = par9 + 5;
-        }
-        else
-        {
-            double d3 = par1 - this.posX;
-            double d4 = par3 - this.posY;
-            double d5 = par5 - this.posZ;
-            double d6 = d3 * d3 + d4 * d4 + d5 * d5;
-
-            if (d6 <= 1.0D)
-            {
-                return;
-            }
-
-            this.boatPosRotationIncrements = 3;
-        }
-
-        this.boatX = par1;
-        this.boatY = par3;
-        this.boatZ = par5;
-        this.boatYaw = (double)par7;
-        this.boatPitch = (double)par8;
-        this.motionX = this.velocityX;
-        this.motionY = this.velocityY;
-        this.motionZ = this.velocityZ;
-    }
-
-    /**
-     * Sets the velocity to the args. Args: x, y, z
-     */
-    @SideOnly(Side.CLIENT)
-    public void setVelocity(double par1, double par3, double par5)
-    {
-        this.velocityX = this.motionX = par1;
-        this.velocityY = this.motionY = par3;
-        this.velocityZ = this.motionZ = par5;
     }
 
     /**
@@ -526,53 +412,6 @@ public class EntityObsidianBoat extends EntityBoat
         }
     }
 
-    public void updateRiderPosition()
-    {   	
-        if (this.riddenByEntity != null)
-        {
-            double d0 = Math.cos((double)this.rotationYaw * Math.PI / 180.0D) * 0.4D;
-            double d1 = Math.sin((double)this.rotationYaw * Math.PI / 180.0D) * 0.4D;
-            this.riddenByEntity.setPosition(this.posX + d0, this.posY + this.getMountedYOffset() + this.riddenByEntity.getYOffset(), this.posZ + d1);
-        }
-    }
-    
-
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
-    protected void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {}
-
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
-    protected void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {}
-
-    @SideOnly(Side.CLIENT)
-    public float getShadowSize()
-    {
-        return 0.0F;
-    }
-
-    /**
-     * First layer of player interaction
-     */
-    public boolean interactFirst(EntityPlayer par1EntityPlayer)
-    {
-        if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && this.riddenByEntity != par1EntityPlayer)
-        {
-            return true;
-        }
-        else
-        {
-            if (!this.worldObj.isRemote)
-            {
-                par1EntityPlayer.mountEntity(this);
-            }
-
-            return true;
-        }
-    }
-    
     /**
      * Takes in the distance the entity has fallen this tick and whether its on the ground to update the fall distance
      * and deal fall damage if landing on the ground.  Args: distanceFallenThisTick, onGround
@@ -595,59 +434,5 @@ public class EntityObsidianBoat extends EntityBoat
         {
             this.fallDistance = (float)((double)this.fallDistance - par1);
         }
-    }
-
-    /**
-     * Sets the damage taken from the last hit.
-     */
-    public void setDamageTaken(float par1)
-    {
-        this.dataWatcher.updateObject(19, Float.valueOf(par1));
-    }
-
-    /**
-     * Gets the damage taken from the last hit.
-     */
-    public float getDamageTaken()
-    {
-        return this.dataWatcher.getWatchableObjectFloat(19);
-    }
-
-    /**
-     * Sets the time to count down from since the last time entity was hit.
-     */
-    public void setTimeSinceHit(int par1)
-    {
-        this.dataWatcher.updateObject(17, Integer.valueOf(par1));
-    }
-
-    /**
-     * Gets the time since the last hit.
-     */
-    public int getTimeSinceHit()
-    {
-        return this.dataWatcher.getWatchableObjectInt(17);
-    }
-
-    /**
-     * Sets the forward direction of the entity.
-     */
-    public void setForwardDirection(int par1)
-    {
-        this.dataWatcher.updateObject(18, Integer.valueOf(par1));
-    }
-
-    /**
-     * Gets the forward direction of the entity.
-     */
-    public int getForwardDirection()
-    {
-        return this.dataWatcher.getWatchableObjectInt(18);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void setIsBoatEmpty(boolean par1)
-    {
-        this.isBoatEmpty = par1;
     }
 }

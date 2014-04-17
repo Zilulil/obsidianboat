@@ -1,6 +1,7 @@
 package com.zilulil.obsidianboat.client.renderer.entity;
 
 import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBoat;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
@@ -8,7 +9,6 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.zilulil.obsidianboat.client.model.ModelObsidianBoat;
 import com.zilulil.obsidianboat.entity.EntityObsidianBoat;
 
 import cpw.mods.fml.relauncher.Side;
@@ -25,7 +25,7 @@ public class RenderObsidianBoat extends Render
     public RenderObsidianBoat()
     {
         this.shadowSize = 0.5F;
-        this.modelObsidianBoat = new ModelObsidianBoat();
+        this.modelObsidianBoat = new ModelBoat();
     }
 
     /**
